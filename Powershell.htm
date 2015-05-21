@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Powershell</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<a href="#ActiveDirectory">Active Directory</a> | 
+	<a href="#PSDrives">PSDrives</a> 
+
+	<hr>	
+
+	<a name="ActiveDirectory"><h1>Active Directory</h1></a>
+
+	<h3><span class="label label-primary">User Administration</span></h3>
+	<h4>Get a list of groups a user is in</h4>
+	<code>Get-ADPrincipalGroupMembership 61408a | select name</code>
+
+	<h4>Check if AD user exists</h4>
+	<code>$ADUser = Get-ADUser -Filter {SamAccountName -eq $User.Name}</code><br>
+	<ul>
+		<li>If user does not exist, $ADUser will be $null</li>
+		<li><a href="http://social.technet.microsoft.com/wiki/contents/articles/12037.active-directory-get-aduser-default-and-extended-properties.aspx">Get-ADUser Default and Extended Properties</a></li>
+	</ul>
+
+	<h3><span class="label label-primary">Group Administration</span></h3>
+	<h4>Get members of a group</h4>
+	<code>Get-ADPrincipalGroupMembership 61408a | select name</code>
+
+	<h4>Add user to a group</h4>
+	<code>Add-ADGroupMember "GroupNAME" -Member USERNAME</code>
+
+	<h4>Remove a user from a group</h4>
+	<code>remove-adgroupmember "GroupNAME" -Member USER_NAME</code>
+
+	<h4>Find names of groups containing a string</h4>
+	<code>Get-ADGroup -Filter {name -like "*STRING*"} | select name</code>
+
+	<h3><span class="label label-primary">ACL - Access Control List</span></h3>
+	<h4>Get ACL for a folder</h4>
+	<code>get-acl | format-list</code><br>
+	<a href="https://technet.microsoft.com/en-us/library/ff730951.aspx">Working with Security Descriptors</a>
+
+	<hr>
+
+	<a name="PSDrives"><h2>PSDrives</h2></a>
+
+	<h4>Create a PSDrive</h4>
+	<code>New-PSDrive -PSProvider filesystem -Root FILE_PATH -Name NAME_FOR_DRIVE</code>
+
+	<h4>List filesystem PSDrives</h4>
+	<code>Get-PSDrive -PSProvider filesystem</code>
+
+	<h4>Push/Pop Location - Save location, switch to a different location, then return to original location</h4>
+	<h6>Push current location onto the stack (alias for Push-Location)</h6>
+	<code>pushd</code>
+	<h6>cd to new location and do some work</h6>
+	<code>cd NEW_PATH</code>
+	<h6>Pop previous location off the stack (alias for Pop-Location)</code>
+	<code>popd</code>
+
+	<h4>Delete a drive</h4>
+	<code>Remove-PSDrive -Name DRIVE_PATH</code>
+
+	<h4>Mount a network drive - Create a PSDrive</h4>
+	<code>New-PSDrive -PSProvider filesystem -Root FILE_PATH -Name NAME_FOR_DRIVE</code>
+
+	<h4>List PSDrives</h4>
+	<code>Get-PSDrive -PSProvider filesystem</code>    
+
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
