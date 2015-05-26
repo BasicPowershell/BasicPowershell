@@ -18,8 +18,16 @@
     <![endif]-->
   </head>
   <body>
+
+  	<div class="container">
+
+
 	<a href="#ActiveDirectory">Active Directory</a> | 
-	<a href="#PSDrives">PSDrives</a> 
+	<a href="#PSDrives">PSDrives</a> |
+	<a href="#FileAdministration">File Administration</a> |
+	<a href="#Output">Output</a> |
+	<a href="#GIT">GIT</a> |
+	<a href="#ControlCharacters">Control and Escape Characters</a> |
 
 	<hr>	
 
@@ -56,7 +64,7 @@
 
 	<hr>
 
-	<a name="PSDrives"><h2>PSDrives</h2></a>
+	<a name="PSDrives"><h1>PSDrives</h1></a>
 
 	<h4>Create a PSDrive</h4>
 	<code>New-PSDrive -PSProvider filesystem -Root FILE_PATH -Name NAME_FOR_DRIVE</code>
@@ -81,8 +89,103 @@
 	<h4>List PSDrives</h4>
 	<code>Get-PSDrive -PSProvider filesystem</code>    
 
+	<hr>
+
+	<a name="Output"><h1>Output</h1></a>
+
+	<h4>Append to a file</h4>
+	<code>... | out-file <FILENAME> -append</code><p>
+
+	<h4>Create new file with same name</h4>
+	<code>... | out-file <FILENAME> -force</code><p>
+
+	<hr>
+
+	<a name="GIT"><h1>GIT with Powershell</h1></a>
+	<ul>
+		<li>Install Windows Git software</li>
+		<li>Install <a href="https://github.com/dahlbyk/posh-git">posh-git</a></li>
+	</ul>
+
+	Resource : <a href="http://git-scm.com/book/en/v2/Git-in-Other-Environments-Git-in-Powershell"> Git in Powershell</a><br>
+
+	<hr>
+
+	<a name="ControlCharacters"><h1>Control and Escape Characters</h1></a>
+	
+    <div class="row">
+        <div class="col-md-6">
+        <table class="table table-striped">
+          <tr>
+            <th>Character</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td>`0</td>
+            <td>Null</td>
+          </tr>
+          <tr>
+            <td>`a</td>
+            <td>Alert bell/beep</td>
+          </tr>
+          <tr>
+            <td>`b</td>
+            <td>Backspace</td>
+          </tr>
+          <tr>
+            <td>`f</td>
+            <td>Form feed (use with printer output)</td>
+          </tr>
+          <tr>
+            <td>`n</td>
+            <td>New Line</td>
+          </tr>
+          <tr>
+            <td>`r</td>
+            <td>Carriage Return</td>
+          </tr>
+          <tr>
+            <td>`r`n</td>
+            <td>Carriage return + New line</td>
+          </tr>
+          <tr>
+            <td>`t</td>
+            <td>Horizontal tab</td>
+          </tr>
+          <tr>
+            <td>`v</td>
+            <td>Vertical tab (use with printer output)</td>
+          </tr>
+          <tr>
+            <td>``</td>
+            <td>To avoid using a Grave-accent as the escape character</td>
+          </tr>
+          <tr>
+            <td>`#</td>
+            <td>To avoid using # to create a comment</td>
+          </tr>
+          <tr>
+            <td>`'</td>
+            <td>To avoid using ' to delimit a string</td>
+          </tr>
+          <tr>
+            <td>`"</td>
+            <td>To avoid using " to delimit a string</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    Resource : <a href="http://ss64.com/ps/syntax-esc.html">Escape characters, Delimiters and Quotes</a><p>
 
 
+
+
+
+
+
+
+	</div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
