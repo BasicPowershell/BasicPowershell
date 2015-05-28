@@ -88,6 +88,12 @@
 
 	<h4>List PSDrives</h4>
 	<code>Get-PSDrive -PSProvider filesystem</code>    
+	<hr>
+
+	<a name="FileAdministration"><h1>File Administration</h1></a>
+
+	<h4>Search files in a folder for a text pattern</h4>
+	<code>Get-ChildItem -recurse | Select-String -pattern "dummy" | group path | select name</code>
 
 	<hr>
 
