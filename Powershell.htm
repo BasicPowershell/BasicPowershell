@@ -46,7 +46,7 @@
 
 	<h3><span class="label label-primary">Group Administration</span></h3>
 	<h4>Get members of a group</h4>
-	<code>Get-ADPrincipalGroupMembership 61408a | select name</code>
+	<code>Get-ADGroupMember GROUPNAME | select name</code>
 
 	<h4>Add user to a group</h4>
 	<code>Add-ADGroupMember "GroupNAME" -Member USERNAME</code>
